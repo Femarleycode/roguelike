@@ -187,16 +187,16 @@ struct Object {
 impl Object {
     pub fn new(x: i32, y: i32, char: char, name: &str, color: Color, blocks: bool) -> Self {
         Object {
-            x: x,
-            y: y,
+            x: x, 
+            y: y, 
             char: char,
             color: color,
             name: name.into(),
             blocks: blocks,
             alive: false,
             fighter: None,
-            ai: None,
-            item: None,
+            ai: None,   
+            item: None,     
         }
     }
 
@@ -692,6 +692,7 @@ fn cast_fireball(
     UseResult::UsedUp
 }
 
+
 fn create_room(room: Rect, map: &mut Map) {
     // go through the tiles in the rectangles to make them passable
     for x in (room.x1 + 1)..room.x2 {
@@ -915,7 +916,7 @@ fn render_all(tcod: &mut Tcod, game: &mut Game, objects: &[Object], fov_recomput
         tcod.fov
             .compute_fov(player.x, player.y, TORCH_RADIUS, FOV_LIGHT_WALLS, FOV_ALGO);
     }
-
+    
     // go through all tiles and set background colour
     for y in 0..MAP_HEIGHT {
         for x in 0..MAP_WIDTH {
@@ -1361,7 +1362,7 @@ fn main_menu(tcod: &mut Tcod) {
         // show options and wait for the player's choice
         let choices = &["Play a new game", "Continue last game", "Quit"];
         let choice = menu("", choices, 24, &mut tcod.root);
-
+        
         match choice {
             Some(0) => {
                 // new game
